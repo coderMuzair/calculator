@@ -11,9 +11,6 @@ function num(param) {
   calHistory.innerHTML += param;
 }
 
-// function calculation (){
-
-// }
 
 function del(){
       currentNum.innerHTML = currentNum.innerHTML.substring(0, currentNum.innerHTML.length -1);
@@ -33,7 +30,8 @@ function operators(opr) {
   // currentNum = document.querySelector('.cal-current').innerHTML;
   console.log(currentNum.innerHTML);
   console.log(currentOpr);
-  currentCalNum = parseInt(currentNum.innerHTML);
+  currentCalNum = Number(currentNum.innerHTML);
+  console.log('currentCalNum: ', currentCalNum);
   currentNum.innerHTML = "";
   
   if(currentOpr){
@@ -93,7 +91,7 @@ function divide(o){
 
 function equal() {
   calHistory.innerHTML = "";
-  currentCalNum = parseInt(currentNum.innerHTML);
+  currentCalNum = Number(currentNum.innerHTML);
   if (currentOpr == "+") {
     currentNum.innerHTML = ans + currentCalNum;
   } else if (currentOpr == "-") {

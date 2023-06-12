@@ -2,8 +2,8 @@
     padding: 0;
     margin: 0;
     box-sizing: border-box;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    background-color: rgb(91, 90, 122);
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    background-color: rgb(255, 255, 255);
 }
 .main{
     height: 100vh;
@@ -14,9 +14,8 @@
 }
 .cal-box{
     width: 320px;
-    /* height: 420px; */
-    /* background-color: blueviolet; */
-    /* padding: 2px; */
+    /* border: 1px solid black;
+    border-radius: 19px; */
 }
 .display-box{
     width: 100%;
@@ -24,6 +23,7 @@
     padding: 5px;
     font-size: 32px;
     background-color: rgb(244, 243, 243);
+    
     border: 1px solid black;
     display: flex;
     flex-direction: column;
@@ -35,18 +35,22 @@
 }
 .cal-current, .cal-history{
     background-color: rgb(244, 243, 243);
+    width: 100%;
+    text-align: end;
+    overflow:auto;
     
 }
 .box{
     display: flex;
     flex-direction: row;
     height: 420px;
-    background-color: aqua;
+    /* background-color: rgb(112, 113, 113); */
 }
 .functions{
     display: flex;
     flex-direction: column;
     background-color: rgb(75, 76, 76);
+    
 
     /* flex-wrap: wrap;     */
     
@@ -57,6 +61,7 @@
     flex-wrap: wrap;
     /* align-content: str;     */
     background-color: rgb(60, 60, 60);
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
     /* background-color: aqua; */
 }
 .functions > div{
@@ -71,7 +76,9 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    cursor: pointer;;
+    cursor: pointer;
+    /* box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px; */
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 } 
  .numbers > div{
     width: 80px;
@@ -83,8 +90,13 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    cursor: pointer;;
+    cursor: pointer;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 } 
 .functions > div:hover{
-    background-color: aqua;
+    background-color: rgb(97, 97, 97);
+}
+.numbers > div:hover{
+    
+    background-color: rgb(69, 68, 68);
 }
