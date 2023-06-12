@@ -15,13 +15,15 @@ function num(param) {
 
 // }
 
-// function del(){
-//     lastIndexOf()
-// }
+function del(){
+      currentNum.innerHTML = currentNum.innerHTML.substring(0, currentNum.innerHTML.length -1);
+      calHistory.innerHTML = calHistory.innerHTML.substring(0, calHistory.innerHTML.length -1)
+} 
 
 function clr() {
   currentNum.innerHTML = "";
   calHistory.innerHTML = "";
+  currentOpr = null;
   multiplyNum = 1;
   ans = 0;
   console.log("clear");
@@ -30,40 +32,63 @@ function clr() {
 function operators(opr) {
   // currentNum = document.querySelector('.cal-current').innerHTML;
   console.log(currentNum.innerHTML);
+  console.log(currentOpr);
   currentCalNum = parseInt(currentNum.innerHTML);
   currentNum.innerHTML = "";
-  if (opr == "+") {
-    currentOpr = "+";
-    calHistory.innerHTML += " + ";
+  
+  if(currentOpr){
+    if(currentOpr == '+'){
+      add(opr);
+    }else if(currentOpr == '-'){
+      subtract(opr)
+    }else if(currentOpr == 'x'){
+      product(opr);
+    }else if(currentOpr == '÷'){
+      divide(opr);
+    }
+  }else
+    if(opr == '+'){
+      add(opr);
+    }else if(opr == '-'){
+      subtract(opr);
+    }else if(opr == 'x'){
+      product(opr);
+    }
+    else if(opr = '÷'){
+      divide(opr);
+    }
+  
+}
+function add(o){
+    currentOpr = o;
+    calHistory.innerHTML += o;
     ans = ans + currentCalNum;
-  } else if (opr == "-") {
-    currentOpr = "-";
-    calHistory.innerHTML += " - ";
+}
+function subtract(o){
+    currentOpr = o;
+    calHistory.innerHTML += o;
     if (!ans) {
       ans = currentCalNum - ans;
     } else {
       ans = ans - currentCalNum;
     }
-  } else if (opr == "x") {
-    if (currentCalNum) {
-      multiplyNum = multiplyNum * currentCalNum;
-      ans = multiplyNum;
-      calHistory.innerHTML += " x ";
-      currentOpr = "x";
-      console.log("ans: ", ans);
-    }
-  } else if (opr == "/") {
-    currentOpr = "/";
-    calHistory.innerHTML += "÷";
+}
+
+function product(o){
+  currentOpr = o;
+  calHistory.innerHTML += o;
+  multiplyNum = multiplyNum * currentCalNum;
+  ans = multiplyNum;
+}
+function divide(o){
+    currentOpr = o;
+    calHistory.innerHTML += o;
     if (!ans) {
       ans = currentCalNum;
     } else {
       ans = ans / currentCalNum;
     }
-    // ans = ans / currentCalNum;
-    console.log("ans: ", ans);
-  }
-  // console.log (ans);
+    
 }
 
 function equal() {
@@ -75,7 +100,7 @@ function equal() {
     currentNum.innerHTML = ans - currentCalNum;
   } else if (currentOpr == "x") {
     currentNum.innerHTML = ans * currentCalNum;
-  } else if (currentOpr == "/") {
+  } else if (currentOpr == "÷") {
     currentNum.innerHTML = ans / currentCalNum;
   }
 }
