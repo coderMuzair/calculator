@@ -4,6 +4,7 @@ var currentCalNum;
 var currentOpr;
 var ans = 0;
 var multiplyNum = 1;
+var currentAns = 0;
 
 function num(param) {
   console.log(param);
@@ -23,17 +24,16 @@ function clr() {
   currentOpr = null;
   multiplyNum = 1;
   ans = 0;
+  currentAns = 0;
   console.log("clear");
 }
 
 function operators(opr) {
-  // currentNum = document.querySelector('.cal-current').innerHTML;
-  console.log(currentNum.innerHTML);
-  console.log(currentOpr);
   currentCalNum = Number(currentNum.innerHTML);
-  console.log('currentCalNum: ', currentCalNum);
   currentNum.innerHTML = "";
-  
+  if(currentAns){
+    calHistory.innerHTML = currentAns;
+  }
   if(currentOpr){
     if(currentOpr == '+'){
       add(opr);
@@ -58,30 +58,49 @@ function operators(opr) {
   
 }
 function add(o){
-    currentOpr = o;
+  if(!currentOpr){
     calHistory.innerHTML += o;
-    ans = ans + currentCalNum;
+  }
+  currentOpr = o;
+    if(currentAns){
+      ans = currentAns 
+    }else{
+      ans = ans + currentCalNum;
+    }
 }
 function subtract(o){
-    currentOpr = o;
+  if(!currentOpr){
     calHistory.innerHTML += o;
-    if (!ans) {
+  }
+  currentOpr = o;
+    if(currentAns){
+      ans = currentAns 
+    }else if (!ans) {
       ans = currentCalNum - ans;
     } else {
       ans = ans - currentCalNum;
     }
 }
-
 function product(o){
+  if(!currentOpr){
+    calHistory.innerHTML += o;
+  }
   currentOpr = o;
-  calHistory.innerHTML += o;
-  multiplyNum = multiplyNum * currentCalNum;
-  ans = multiplyNum;
+  if(currentAns){
+    ans = currentAns 
+  }else{
+    multiplyNum = multiplyNum * currentCalNum;
+    ans = multiplyNum;
+  }
 }
 function divide(o){
-    currentOpr = o;
+  if(!currentOpr){
     calHistory.innerHTML += o;
-    if (!ans) {
+  }
+  currentOpr = o;
+    if(currentAns){
+      ans = currentAns 
+    }else if (!ans) {
       ans = currentCalNum;
     } else {
       ans = ans / currentCalNum;
@@ -91,14 +110,22 @@ function divide(o){
 
 function equal() {
   calHistory.innerHTML = "";
+  // currentAns = 0;
   currentCalNum = Number(currentNum.innerHTML);
+  console.log('ans: ', ans);
   if (currentOpr == "+") {
-    currentNum.innerHTML = ans + currentCalNum;
+    currentAns = ans + currentCalNum;
+    console.log('ans: ', ans);
+    console.log('currentAns equal: ', currentAns);
+    currentNum.innerHTML = currentAns;
   } else if (currentOpr == "-") {
-    currentNum.innerHTML = ans - currentCalNum;
+    currentAns = ans - currentCalNum;
+    currentNum.innerHTML = currentAns;
   } else if (currentOpr == "x") {
-    currentNum.innerHTML = ans * currentCalNum;
+    currentAns = ans * currentCalNum;
+    currentNum.innerHTML = currentAns;
   } else if (currentOpr == "÷") {
-    currentNum.innerHTML = ans / currentCalNum;
+    currentAns = ans / currentCalNum;
+    currentNum.innerHTML = currentAns;
   }
 }
