@@ -29,6 +29,29 @@ function clr() {
 }
 
 function operators(opr) {
+  console.log('opr: ', opr);
+
+  var preventDupl = calHistory.innerHTML.charAt(calHistory.innerHTML.length-1)
+  console.log('preventDupl: ', preventDupl);
+  if(preventDupl == opr ) return;
+  // }else if (preventDupl == "+" || preventDupl == "-" || preventDupl == "x" || preventDupl == "÷"){
+
+  //       calHistory.innerHTML = calHistory.innerHTML.slice(0, -1) ;
+  // }
+  
+  // else{
+  //   if(currentOpr){
+  //     console.log('else', calHistory.innerHTML.slice(0, -1) );
+  //     calHistory.innerHTML = calHistory.innerHTML.slice(0, -1) ;
+
+  //   }
+    // .length - 1 = opr
+    // console.log('preventDupl else: ', preventDupl);
+  // }
+  
+  // preventDupl = opr
+  // console.log('preventDupl: ', preventDupl);
+
   currentCalNum = Number(currentNum.innerHTML);
   currentNum.innerHTML = "";
   if(currentAns){
@@ -58,9 +81,12 @@ function operators(opr) {
   
 }
 function add(o){
-  if(!currentOpr){
-    calHistory.innerHTML += o;
-  }
+  // if(!currentOpr){
+  // }
+  // console.log('preventDupl in add: ', calHistory.innerHTML.charAt(calHistory.innerHTML-1));
+
+  calHistory.innerHTML += o;
+  console.log('o add function: ', o);
   currentOpr = o;
     if(currentAns){
       ans = currentAns 
